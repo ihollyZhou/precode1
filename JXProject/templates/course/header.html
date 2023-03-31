@@ -1,0 +1,20 @@
+{% load static %}
+<div class="container">   
+    <nav class="navbar navbar-default" role="navigation"> 
+        <div class="navbar-header">
+            <a class="navbar-brand" href="https://www.sc.sdu.edu.cn/"> <!-- 导航栏头部 （折叠按钮+品牌标签）-->
+                <img src="{% static '/images/sdlogo.png' %}" width="100px">
+            </a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav" role="tablist">
+                <li><a href="{% url 'course:manage_course' %}">课程信息</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right:10px"> 
+                <li><a href="{% url 'note:note_title' %}">网站首页</a></li>
+                <li><a>{{ user.username }}</a></li>
+                <li><a href="{% url 'account:user_logout' %}">退出</a></li>
+            </ul> 
+        </div>    
+    </nav>              
+</div>

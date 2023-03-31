@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}运行代码{% endblock %}
+{% block content %}
+    <div class="container">
+<textarea id="code" style="min-height: 200px;min-width: 90%;">
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>测试</title>
+    </head>
+    <body>
+    <h1>测试一下</h1>
+    <script>
+        document.write("成功！");
+    </script>
+    </body>
+    </html>
+
+</textarea>
+    </div>
+    <iframe name="run" style="min-height: 100px;min-width: 90%"></iframe>
+    <button id="btn">运行</button>
+
+    <script>
+        var normalizeCode = function (code) {
+            code = code.replace(/&lt;/g, '<');
+            code = code.replace(/&gt;/g, '>');
+            code = code.replace(/&amp;/g, '&');
+            return code;
+        };
+        var runCode = function () {
+            var code = document.getElementById('code').value;
+            if (code != "") {
+                console.log(code);
+                code = normalizeCode(code);
+                console.log(code);
+                var win = window.open('', "run", '');
+                win.document.open('text/html', 'replace');
+                win.opener = null;
+                win.document.write(code);
+                win.document.close();
+            }
+        };
+        var btn = document.getElementById('btn');
+        btn.addEventListener('click', runCode, false);
+    </script>
+{% endblock %}

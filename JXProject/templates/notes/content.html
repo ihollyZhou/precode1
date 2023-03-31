@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}通知详情{% endblock %}
+{% block content %}
+    <div class="row text-center vertical-middle-sm">
+        <h1>{{ article.title }}</h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            <p class="text-center"><span>{{ article.author }}
+            </span><span style="margin-left:20px">{{ time }}</span>
+            </p>
+            <div>{{ article.body}}</div>
+        </div>
+    </div>
+    <div class="alert-success" role="alert">博观而约取，厚积而薄发。</div>
+{% endblock %}

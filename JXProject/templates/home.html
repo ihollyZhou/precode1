@@ -1,0 +1,175 @@
+
+{% extends "base.html" %}
+{% block title %}首页{% endblock %}
+{% block yangshi %}
+    <meta charset='utf-8'/>
+    <link href='../static/css/fullcalendar.css' rel='stylesheet'/>
+    <link href='../static/css/fullcalendar.print.css' rel='stylesheet' media='print'/>
+
+    <style>
+
+        body {
+            margin: 40px 10px;
+            padding: 0;
+            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+            font-size: 14px;
+        }
+
+        #calendar {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+    </style>
+{% endblock %}
+{% block content %}
+{#<div class="container">#}
+{#        <h1>Welcome!</h1>#}
+{##}
+{#        <div class="row">#}
+{#            <div class='col-sm-6'>#}
+{#                <div class="form-group">#}
+{#                    <label>选择日期：</label>#}
+{#                    <!--指定 date标记-->#}
+{#                    <div class='input-group date' id='datetimepicker1'>#}
+{#                        <input type='text' class="form-control"/>#}
+{#                        <span class="input-group-addon">#}
+{#                    <span class="glyphicon glyphicon-calendar"></span>#}
+{#                </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class='col-sm-6'>#}
+{#                <div class="form-group">#}
+{#                    <label>选择日期+时间：</label>#}
+{#                    <!--指定 date标记-->#}
+{#                    <div class='input-group date' id='datetimepicker2'>#}
+{#                        <input type='text' class="form-control"/>#}
+{#                        <span class="input-group-addon">#}
+{#                    <span class="glyphicon glyphicon-calendar"></span>#}
+{#                </span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#        {% load static %}#}
+{#        <img src="{% static 'images/rili1.png' %}">#}
+{#    </div>#}
+{##}
+{##}
+{#    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">#}
+{#    <link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"#}
+{#          rel="stylesheet">#}
+{##}
+{#    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>#}
+{#    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>#}
+{#    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>#}
+{#    <script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>#}
+{#    <script>$(function () {#}
+{#        $('#datetimepicker1').datetimepicker({#}
+{#            format: 'YYYY-MM-DD',#}
+{#            locale: moment.locale('zh-cn')#}
+{#        });#}
+{#        $('#datetimepicker2').datetimepicker({#}
+{#            format: 'YYYY-MM-DD hh:mm',#}
+{#            locale: moment.locale('zh-cn')#}
+{#        });#}
+{#    });#}
+{##}
+{#    $(function () {#}
+{#        var picker1 = $('#datetimepicker1').datetimepicker({#}
+{#            format: 'YYYY-MM-DD',#}
+{#            locale: moment.locale('zh-cn'),#}
+{#            //minDate: '2016-7-1'#}
+{#        });#}
+{#        var picker2 = $('#datetimepicker2').datetimepicker({#}
+{#            format: 'YYYY-MM-DD',#}
+{#            locale: moment.locale('zh-cn')#}
+{#        });#}
+{#        //动态设置最小值#}
+{#        picker1.on('dp.change', function (e) {#}
+{#            picker2.data('DateTimePicker').minDate(e.date);#}
+{#        });#}
+{#        //动态设置最大值#}
+{#        picker2.on('dp.change', function (e) {#}
+{#            picker1.data('DateTimePicker').maxDate(e.date);#}
+{#        });#}
+{#    });#}
+{##}
+{#    $('#datetimepicker1').datetimepicker({#}
+{#        format: 'YYYY-MM-DD',#}
+{#        locale: moment.locale('zh-cn'),#}
+{#        defaultDate: "2021-1-1"#}
+{#    });#}
+{#    </script>#}
+    <div id='calendar'></div>
+{% endblock %}
+{% block javascript %}
+    <script src='../static/js/moment.min.js'></script>
+    <script src='../static/js/jquery.min.js'></script>
+    <script src='../static/js/fullcalendar.min.js'></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultDate: '2021-06-12',
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+                events: [
+                    {
+                        title: '六一',
+                        start: '2021-06-01'
+                    },
+                    {
+                        title: '高考',
+                        start: '2021-06-07',
+                        end: '2021-06-09'
+                    },
+                    {
+                        title: '填写毕业生登记表',
+                        start: '2021-06-07T15:00:00',
+                        end: '2021-06-08'
+                    },
+                    {
+                        id: 999,
+                        title: '跑步',
+                        start: '2021-06-10T18:00:00'
+                    },
+                    {
+                        id: 999,
+                        title: '跑步',
+                        start: '2021-06-14T18:00:00'
+                    },
+                    {
+                        id: 999,
+                        title: '跑步',
+                        start: '2021-06-17T18:00:00'
+                    },
+                    {
+                        title: '端午节',
+                        start: '2021-06-12',
+                        end: '2021-06-14'
+                    },
+                    {
+                        title: '六级',
+                        start: '2021-06-12T14:00:00'
+                    },
+                    {
+                        title: '看MOOC',
+                        url: 'https://www.icourse163.org/',
+                        start: '2021-06-28'
+                    }
+                ]
+            });
+
+        });
+
+    </script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "course/base.html" %}
+{% block title %}删除课程{% endblock %}
+{% block content %}
+<div>
+    <form action="" method="post">{% csrf_token %}
+        <p>确定要删除 "{{ object.title }}"吗?</p>
+        <input type="submit" value="确认" />
+    </form> 
+</div>
+{% endblock %}
